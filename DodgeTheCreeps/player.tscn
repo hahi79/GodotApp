@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://253q1m7x66ig"]
+[gd_scene load_steps=13 format=3 uid="uid://253q1m7x66ig"]
 
 [ext_resource type="Texture2D" uid="uid://u41kbwq7xed1" path="res://art/playerGrey_up1.png" id="1_1grtr"]
 [ext_resource type="Script" path="res://player.gd" id="1_jn6b0"]
@@ -35,8 +35,26 @@ animations = [{
 radius = 25.0
 height = 70.0
 
+[sub_resource type="Gradient" id="Gradient_061y7"]
+colors = PackedColorArray(1, 1, 1, 0.501961, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8y58k"]
+gradient = SubResource("Gradient_061y7")
+
+[sub_resource type="Curve" id="Curve_ctqsd"]
+_data = [Vector2(0.005, 0.5), 0.0, 0.0, 0, 0, Vector2(0.995, 0.324), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_igle3"]
+curve = SubResource("Curve_ctqsd")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_26mbo"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_igle3")
+color_ramp = SubResource("GradientTexture1D_8y58k")
+
 [node name="Player" type="Area2D"]
-monitorable = false
+z_index = 10
 script = ExtResource("1_jn6b0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -46,5 +64,13 @@ animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_i6cf4")
+
+[node name="Trail" type="GPUParticles2D" parent="."]
+z_index = -1
+position = Vector2(0, -6)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_26mbo")
+texture = ExtResource("3_i4170")
+speed_scale = 2.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

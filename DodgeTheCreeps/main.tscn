@@ -22,6 +22,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.501961, 0.501961, 1, 1)
 
+[node name="Player" parent="." instance=ExtResource("2_nmgy3")]
+
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
 
@@ -35,12 +37,10 @@ curve = SubResource("Curve2D_w1nbo")
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
 
-[node name="Player" parent="." instance=ExtResource("2_nmgy3")]
-
 [node name="HUD" parent="." instance=ExtResource("3_yjgea")]
 
 [node name="Sound" parent="." instance=ExtResource("4_vj70k")]
 
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
-[connection signal="hit" from="Player" to="." method="_on_player_hit"]
