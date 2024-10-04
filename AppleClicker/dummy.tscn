@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnpmee87tg4gt"]
+
+[ext_resource type="Texture2D" uid="uid://dqwbxqw473rj0" path="res://assets/bg.png" id="1_a4486"]
+[ext_resource type="Texture2D" uid="uid://dfybuhg3yopqa" path="res://assets/apple.png" id="2_4s600"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_a4486")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_4s600")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Timer2" type="Timer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -0.5
+offset_right = 0.5
+offset_bottom = 195.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 70
+text = "0 Apples"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="Button2" type="Button" parent="CanvasLayer"]
+offset_right = 8.0
+offset_bottom = 8.0

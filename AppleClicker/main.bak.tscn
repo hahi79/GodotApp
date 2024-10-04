@@ -1,0 +1,108 @@
+[gd_scene load_steps=4 format=3 uid="uid://l4pq3pm8aa7g"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_ihujr"]
+[ext_resource type="Texture2D" uid="uid://dqwbxqw473rj0" path="res://assets/bg.png" id="2_ms7gg"]
+[ext_resource type="Texture2D" uid="uid://dfybuhg3yopqa" path="res://assets/apple.png" id="3_o5dmh"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_ihujr")
+
+[node name="BG" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_ms7gg")
+centered = false
+
+[node name="Apple" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_o5dmh")
+
+[node name="SecTimer" type="Timer" parent="."]
+
+[node name="TreeTimer" type="Timer" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="AppleText" type="Label" parent="HUD"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -0.5
+offset_right = 0.5
+offset_bottom = 195.0
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 70
+text = "0 Apples"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="TreeButton" type="Button" parent="HUD"]
+offset_top = 30.0
+offset_right = 400.0
+offset_bottom = 164.0
+theme_override_font_sizes/font_size = 45
+text = "リンゴの木 x 0
+(10 apples)"
+
+[node name="PowerButton" type="Button" parent="HUD"]
+offset_top = 200.0
+offset_right = 400.0
+offset_bottom = 334.0
+theme_override_font_sizes/font_size = 45
+text = "クリックパワー x 0
+(100 apples)"
+
+[node name="Panel" type="Panel" parent="HUD"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -400.0
+offset_bottom = 400.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -122.0
+offset_top = 1.0
+offset_right = 125.0
+offset_bottom = 104.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="HUD/Panel/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="HUD/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_stretch_ratio = 0.0
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="HUD/Panel/MarginContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "タイム"
+
+[node name="Label2" type="Label" parent="HUD/Panel/MarginContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "00:00"
+
+[connection signal="timeout" from="SecTimer" to="." method="_on_sec_timer_timeout"]
+[connection signal="timeout" from="TreeTimer" to="." method="_on_tree_timer_timeout"]
+[connection signal="pressed" from="HUD/TreeButton" to="." method="_on_tree_button_pressed"]
+[connection signal="pressed" from="HUD/PowerButton" to="." method="_on_power_button_pressed"]

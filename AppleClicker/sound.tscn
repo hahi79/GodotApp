@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://csvqgboxa5gba"]
+
+[ext_resource type="Script" path="res://sound.gd" id="1_qefp3"]
+[ext_resource type="AudioStream" uid="uid://do315tmqpbb3x" path="res://assets/Beep.wav" id="2_onjrc"]
+[ext_resource type="AudioStream" uid="uid://l8181nd8qi53" path="res://assets/Click.wav" id="3_hhr3e"]
+[ext_resource type="AudioStream" uid="uid://bw1o8g0883ag8" path="res://assets/Hiscore.wav" id="4_8xff0"]
+[ext_resource type="AudioStream" uid="uid://ch3toxilxwk6i" path="res://assets/PowerUp.wav" id="5_toh5v"]
+[ext_resource type="AudioStream" uid="uid://c0iq7cmp7oy6m" path="res://assets/TreeUp.wav" id="6_ur8an"]
+
+[node name="Sound" type="Node" node_paths=PackedStringArray("n_stream_players")]
+script = ExtResource("1_qefp3")
+n_stream_players = [NodePath("AudioStreamPlayer"), NodePath("AudioStreamPlayer2"), NodePath("AudioStreamPlayer3"), NodePath("AudioStreamPlayer4"), NodePath("AudioStreamPlayer5")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_onjrc")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hhr3e")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8xff0")
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_toh5v")
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ur8an")
