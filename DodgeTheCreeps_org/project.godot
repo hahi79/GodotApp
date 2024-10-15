@@ -10,13 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Dodge the Creeps"
-config/description="This is a simple game where your character must move
-and avoid the enemies for as long as possible.
-
-This is a finished version of the game featured in the 'Your first 2D game'
-tutorial in the documentation. For more details, consider
-following the tutorial in the documentation."
+config/name="Dodge the Creeps.org"
 config/tags=PackedStringArray("2d", "demo", "official")
 run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.2")
