@@ -1,0 +1,18 @@
+config_version=5
+
+[application]
+
+config/name="Platformer.org"
+run/main_scene="res://stage1.tscn"
+config/features=PackedStringArray("4.2", "Forward Plus")
+config/tags=PackedStringArray("2d","ゆっくり本")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Audio="*res://audio.tscn"
+UI="*res://ui.tscn"
+
+[dotnet]
+
+project/assembly_name="Platformer"
