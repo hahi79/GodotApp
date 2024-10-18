@@ -34,6 +34,7 @@ func _on_weak_area_body_entered(body):
 # AtttackAreaになにかが重なった
 func _on_attack_area_body_entered(body):
 	if body.name == "Player":
-		body.knockback()
 		n_game.damage(20)
+		if n_game.is_player_dead()==false :
+			body.knockback()
 

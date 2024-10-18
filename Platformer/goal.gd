@@ -32,6 +32,6 @@ func shower_coin():
 		var x=randf_range(-100,100)
 		coin.position=global_position+Vector2(x,-500)
 		get_tree().root.add_child(coin)
-		await get_tree().create_timer(0.01).timeout
+		await n_game.wait_sec(0.01)
 		
 		

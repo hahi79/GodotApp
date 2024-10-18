@@ -4,7 +4,7 @@ const HP_MAX=100
 var hp :int
 var coin : int
 var scene_result
-
+# ノード
 var n_hud
 var n_sound
 var n_player
@@ -34,11 +34,16 @@ func game():
 	n_hud.set_health_max(HP_MAX)
 	n_hud.set_health(hp)
 	n_hud.set_coin(coin)
+	# スタート画面
 	n_hud.hide()
 	await exec_scene(Scene.GAME_START)
+	# ゲーム画面
+	n_sound.play_bgm()
 	n_hud.show()
 	await exec_scene(Scene.STAGE_1)
 	n_hud.hide()
+	n_sound.stop_bgm()
+	# ゲームオーバ画面またはゲームクリア画面
 	if scene_result==Scene.GAME_CLEAR:
 		await exec_scene(Scene.GAME_CLEAR)
 	else:
@@ -58,12 +63,12 @@ func exec_scene(id):
 			scene_path="res://stage_1.tscn"
 
 	scene_result=Result.NONE
-	print("before change scene(%s)\n"%scene_path)
+	#print("before change scene(%s)\n"%scene_path)
 	get_tree().change_scene_to_file(scene_path)
-	print("after change scene(%s)\n"%scene_path)
+	#print("after change scene(%s)\n"%scene_path)
 	while scene_result==Result.NONE:
 		await wait_sec(0.1)
-	
+# シーンリザルトをセット	
 func set_scene_result(id):
 	print("set_scene_result(%d)"%id)
 	scene_result=id
@@ -78,15 +83,16 @@ func _ready():
 #func _process(delta):
 #	pass
 
+# HP加算
 func add_hp(value):
 	hp += value
 	hp = clampi(hp,0,HP_MAX)
 	n_hud.set_health(hp)
-
+# Coin加算
 func add_coin(value):
 	coin += value
 	n_hud.set_coin(coin)
-
+# プレーヤにダメージ
 func damage(value):
 	n_sound.play_se(n_sound.SE_DAMAGE)
 	add_hp(-value)
@@ -95,10 +101,12 @@ func damage(value):
 			await n_player.dead_motion()
 		await wait_sec(2)
 		set_scene_result(Result.GAME_OVER)
-
 # 秒待ち
 func wait_sec(sec):
 	await get_tree().create_timer(sec).timeout
-
+# プレーヤノードをセット
 func set_player(node):
 	n_player=node
+# プレーヤ死亡か?
+func is_player_dead():
+	return hp<=0

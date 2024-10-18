@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -400.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+@export var n_collision : CollisionShape2D
 @export var n_anim : AnimatedSprite2D
 @export var n_camera : Camera2D
 var n_sound 
@@ -29,7 +30,9 @@ func _ready():
 	n_game.set_player(self)
 	state = ST_STAND
 	can_move = true
-	n_anim.set_position( Vector2.ZERO)
+	n_anim.set_position(Vector2.ZERO)
+	n_anim.show()
+	n_collision.disabled = false
 	is_fall_motion=false
 
 func _physics_process(delta):
@@ -70,9 +73,11 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x,0,SPEED)
 
 	move_and_slide()
+	# 画面サイズより下にいったら
 	var screen_size=get_viewport_rect().size
 	if position.y >=screen_size.y:
 		await fall_motion(velocity)
+		await n_game.wait_sec(2)
 		n_game.set_scene_result(n_game.Result.GAME_OVER)
 
 # ノックバック処理
@@ -91,8 +96,10 @@ func dead_motion():
 	
 # 落下モーション
 func fall_motion(velocity:Vector2):
-	#get_tree().paused=true
+	# 落下中は、move_and_slide()させない
 	is_fall_motion=true
+	# コリジョン禁止
+	n_collision.disabled=true
 	const delta=0.02
 	var screen_rect :Rect2 =get_viewport_rect()
 	var center = n_camera.get_screen_center_position()
@@ -101,8 +108,7 @@ func fall_motion(velocity:Vector2):
 		await n_game.wait_sec(delta)
 		velocity.y += gravity * delta
 		n_anim.position += velocity * delta
-	
+	n_anim.hide()
 	is_fall_motion=false
-	#get_tree().paused=false
 
 	
