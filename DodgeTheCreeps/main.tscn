@@ -1,18 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://0at12rta6t55"]
+[gd_scene load_steps=6 format=3 uid="uid://boh1peg3nj1m7"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_05dhj"]
-[ext_resource type="PackedScene" uid="uid://253q1m7x66ig" path="res://player.tscn" id="2_nmgy3"]
-[ext_resource type="PackedScene" uid="uid://wqwq3jvx1kdu" path="res://hud.tscn" id="3_yjgea"]
-[ext_resource type="PackedScene" uid="uid://clwas5pouk4lo" path="res://sound.tscn" id="4_vj70k"]
+[ext_resource type="Script" path="res://main.gd" id="1_jt1nn"]
+[ext_resource type="PackedScene" uid="uid://bv663tvlpwi02" path="res://player.tscn" id="1_ssp5e"]
+[ext_resource type="PackedScene" uid="uid://ct6t74tlytn87" path="res://hud.tscn" id="3_oxtiv"]
+[ext_resource type="PackedScene" uid="uid://m0pwthdfuvfh" path="res://sound.tscn" id="4_lwe31"]
 
-[sub_resource type="Curve2D" id="Curve2D_w1nbo"]
+[sub_resource type="Curve2D" id="Curve2D_t2ms5"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 480, 0, 0, 0, 0, 0, 480, 720, 0, 0, 0, 0, 0, 720, 0, 0, 0, 0, 0, 0)
 }
 point_count = 5
 
 [node name="Main" type="Node"]
-script = ExtResource("1_05dhj")
+script = ExtResource("1_jt1nn")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -20,9 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.501961, 0.501961, 1, 1)
-
-[node name="Player" parent="." instance=ExtResource("2_nmgy3")]
+color = Color(0.501961, 0.52549, 1, 1)
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -33,14 +31,16 @@ wait_time = 0.5
 position = Vector2(240, 450)
 
 [node name="MobPath" type="Path2D" parent="."]
-curve = SubResource("Curve2D_w1nbo")
+curve = SubResource("Curve2D_t2ms5")
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
 
-[node name="HUD" parent="." instance=ExtResource("3_yjgea")]
+[node name="Player" parent="." instance=ExtResource("1_ssp5e")]
 
-[node name="Sound" parent="." instance=ExtResource("4_vj70k")]
+[node name="HUD" parent="." instance=ExtResource("3_oxtiv")]
 
-[connection signal="hit" from="Player" to="." method="_on_player_hit"]
+[node name="Sound" parent="." instance=ExtResource("4_lwe31")]
+
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="hit" from="Player" to="." method="_on_player_hit"]

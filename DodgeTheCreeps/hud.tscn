@@ -1,16 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://wqwq3jvx1kdu"]
+[gd_scene load_steps=5 format=3 uid="uid://ct6t74tlytn87"]
 
-[ext_resource type="FontFile" uid="uid://crrn1vgox8ptd" path="res://fonts/Xolonium-Regular.ttf" id="1_4wbil"]
-[ext_resource type="Script" path="res://hud.gd" id="1_77tx7"]
+[ext_resource type="Script" path="res://hud.gd" id="1_d5ech"]
+[ext_resource type="FontFile" uid="uid://hk3m6kv2capy" path="res://fonts/Xolonium-Regular.ttf" id="1_dh6cr"]
 
-[sub_resource type="InputEventAction" id="InputEventAction_0kj07"]
+[sub_resource type="InputEventAction" id="InputEventAction_261yo"]
 action = &"start_game"
 
-[sub_resource type="Shortcut" id="Shortcut_gji3e"]
-events = [SubResource("InputEventAction_0kj07")]
+[sub_resource type="Shortcut" id="Shortcut_6nabo"]
+events = [SubResource("InputEventAction_261yo")]
 
 [node name="HUD" type="CanvasLayer"]
-script = ExtResource("1_77tx7")
+script = ExtResource("1_d5ech")
 
 [node name="ScoreLabel" type="Label" parent="."]
 anchors_preset = 5
@@ -20,7 +20,7 @@ offset_left = -22.5
 offset_right = 22.5
 offset_bottom = 78.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_4wbil")
+theme_override_fonts/font = ExtResource("1_dh6cr")
 theme_override_font_sizes/font_size = 64
 text = "0"
 horizontal_alignment = 1
@@ -38,7 +38,7 @@ offset_right = 240.0
 offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_4wbil")
+theme_override_fonts/font = ExtResource("1_dh6cr")
 theme_override_font_sizes/font_size = 64
 text = "Dodge the Creeps"
 horizontal_alignment = 1
@@ -51,15 +51,15 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -96.0
-offset_top = -160.0
-offset_right = 81.0
-offset_bottom = -74.0
+offset_left = -89.0
+offset_top = -183.0
+offset_right = 88.0
+offset_bottom = -97.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("1_4wbil")
+theme_override_fonts/font = ExtResource("1_dh6cr")
 theme_override_font_sizes/font_size = 64
-shortcut = SubResource("Shortcut_gji3e")
+shortcut = SubResource("Shortcut_6nabo")
 text = "Start"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

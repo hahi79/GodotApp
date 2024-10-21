@@ -1,25 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://0bdod3vs6dph"]
+[gd_scene load_steps=4 format=3 uid="uid://bb7h2dbhbqbab"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_enanq"]
-[ext_resource type="Texture2D" uid="uid://dqwbxqw473rj0" path="res://assets/bg.png" id="1_q6u5t"]
-[ext_resource type="Texture2D" uid="uid://dfybuhg3yopqa" path="res://assets/apple.png" id="2_xf17y"]
-[ext_resource type="PackedScene" uid="uid://bug6ljyopiv0t" path="res://time_record.tscn" id="4_qucq0"]
-[ext_resource type="PackedScene" uid="uid://csvqgboxa5gba" path="res://sound.tscn" id="5_hixvr"]
+[ext_resource type="Script" path="res://main.gd" id="1_5p2jn"]
+[ext_resource type="Texture2D" uid="uid://b4syu3vk03d53" path="res://assets/bg.png" id="1_r1qho"]
+[ext_resource type="Texture2D" uid="uid://b7j6f026y4wha" path="res://assets/apple.png" id="2_yv5lj"]
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("n_time_record", "n_sound")]
-script = ExtResource("1_enanq")
-n_time_record = NodePath("HUD/TimeRecord")
-n_sound = NodePath("Sound")
+[node name="Main" type="Node2D"]
+script = ExtResource("1_5p2jn")
 
 [node name="BG" type="Sprite2D" parent="."]
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("1_q6u5t")
+texture = ExtResource("1_r1qho")
 centered = false
 
 [node name="Apple" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_xf17y")
+texture = ExtResource("2_yv5lj")
 
 [node name="SecTimer" type="Timer" parent="."]
 
@@ -31,14 +27,15 @@ texture = ExtResource("2_xf17y")
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -0.5
-offset_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
 offset_bottom = 195.0
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 70
-text = "0 Apples"
+text = "0 Apples
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -58,10 +55,6 @@ offset_bottom = 334.0
 theme_override_font_sizes/font_size = 45
 text = "クリックパワー x 0
 (100 apples)"
-
-[node name="TimeRecord" parent="HUD" instance=ExtResource("4_qucq0")]
-
-[node name="Sound" parent="." instance=ExtResource("5_hixvr")]
 
 [connection signal="timeout" from="SecTimer" to="." method="_on_sec_timer_timeout"]
 [connection signal="timeout" from="TreeTimer" to="." method="_on_tree_timer_timeout"]

@@ -11,7 +11,7 @@ var collision : CollisionShape2D
 func _ready():
 	screen_size = get_viewport_rect().size
 	anim = get_node("AnimatedSprite2D")
-	collision = get_node("CollisionShape2D")
+	collision = get_node("CollisionShape2D")	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -42,14 +42,14 @@ func _process(delta):
 		anim.animation = "up"
 		anim.flip_v = (velocity.y > 0)
 
-func _on_body_entered(body):
-	hide()  # playerを消す
-	hit.emit() # hit シグナル発行→上位で処理
-	# シグナル処理中は、物理プロパティ変更できないので、遅延処理する. 
-	collision.set_deferred("disabled",true) #コリジョン無効化
 
-# スタート
+func _on_body_entered(body):
+	hide()
+	hit.emit()
+	collision.set_deferred("disabled",true)
+
 func start(pos):
 	position=pos
 	show()
 	collision.disabled=false
+

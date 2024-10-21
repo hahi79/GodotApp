@@ -33,12 +33,15 @@ func play():
 		await wait_sec(0.1)
 
 	n_sound.stop_bgm()
-	n_sound.play_game_over()
+	n_sound.play_game_over() 
 	n_hud.show_message("Game Over")
 	await wait_sec(2)
 	delete_all_mobs()
 	show_title()
 	await wait_sec(1)
+
+func delete_all_mobs():
+	get_tree().call_group("mobs","queue_free")
 
 # 時間(秒)待ち	
 func wait_sec(sec):
@@ -47,10 +50,6 @@ func wait_sec(sec):
 # タイトル表示
 func show_title():
 	n_hud.show_message("Dodge the Creeps")
-
-# mobを全部消去
-func delete_all_mobs():
-	get_tree().call_group("mobs","queue_free")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -97,5 +96,3 @@ func _on_score_timer_timeout():
 func _on_player_hit():
 	stop_timer()
 	is_game_over=true
-
-
