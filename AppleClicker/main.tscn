@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bb7h2dbhbqbab"]
+[gd_scene load_steps=6 format=3 uid="uid://bb7h2dbhbqbab"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_5p2jn"]
 [ext_resource type="Texture2D" uid="uid://b4syu3vk03d53" path="res://assets/bg.png" id="1_r1qho"]
 [ext_resource type="Texture2D" uid="uid://b7j6f026y4wha" path="res://assets/apple.png" id="2_yv5lj"]
+[ext_resource type="PackedScene" uid="uid://e3yp2cjanwh5" path="res://time_record.tscn" id="4_lxlv1"]
+[ext_resource type="PackedScene" uid="uid://cd6a64ub1tfx" path="res://sound.tscn" id="5_yfd0x"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" node_paths=PackedStringArray("n_time_record", "n_sound")]
 script = ExtResource("1_5p2jn")
+n_time_record = NodePath("HUD/TimeRecord")
+n_sound = NodePath("Sound")
 
 [node name="BG" type="Sprite2D" parent="."]
 scale = Vector2(0.6, 0.6)
@@ -55,6 +59,10 @@ offset_bottom = 334.0
 theme_override_font_sizes/font_size = 45
 text = "クリックパワー x 0
 (100 apples)"
+
+[node name="TimeRecord" parent="HUD" instance=ExtResource("4_lxlv1")]
+
+[node name="Sound" parent="." instance=ExtResource("5_yfd0x")]
 
 [connection signal="timeout" from="SecTimer" to="." method="_on_sec_timer_timeout"]
 [connection signal="timeout" from="TreeTimer" to="." method="_on_tree_timer_timeout"]
