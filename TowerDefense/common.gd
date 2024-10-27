@@ -1,4 +1,5 @@
 extends Node
+class_name Common
 
 const DAMAGE_MIN=1.0
 

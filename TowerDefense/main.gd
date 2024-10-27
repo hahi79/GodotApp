@@ -1,5 +1,4 @@
 extends Node2D
-
 class_name Main
 
 @export var n_camera : Camera2D

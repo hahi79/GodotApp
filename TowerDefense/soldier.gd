@@ -1,4 +1,5 @@
 extends Node2D
+class_name Soldier
 
 ### ノード ###
 @export var n_anim : AnimatedSprite2D

@@ -1,5 +1,4 @@
 extends Node
-
 class_name Sound
 
 @export var n_bgm : AudioStreamPlayer
