@@ -12,3 +12,4 @@ func set_health_max(value):
 # Coin数セット
 func set_coin(value):
 	n_coin.text="%02d" % value
+	

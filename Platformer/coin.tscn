@@ -1,19 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://bn1nkvw5cfgxc"]
+[gd_scene load_steps=4 format=3 uid="uid://bl2wm5lyl8mb"]
 
-[ext_resource type="Script" path="res://coin.gd" id="1_xoeyk"]
-[ext_resource type="Texture2D" uid="uid://cn5ummyb0evpq" path="res://assets/coin.png" id="2_udil1"]
+[ext_resource type="Script" path="res://coin.gd" id="1_yb66l"]
+[ext_resource type="Texture2D" uid="uid://bw72e6xuo7nqu" path="res://assets/coin.png" id="2_tmte5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkbgs"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fyhdc"]
 size = Vector2(26, 34)
 
 [node name="Coin" type="Area2D"]
-script = ExtResource("1_xoeyk")
+script = ExtResource("1_yb66l")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_udil1")
+texture = ExtResource("2_tmte5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_bkbgs")
+shape = SubResource("RectangleShape2D_fyhdc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

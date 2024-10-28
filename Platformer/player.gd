@@ -12,7 +12,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var n_sound 
 var n_game
 
-
 # ステート値
 enum {
 	ST_STAND,
@@ -93,7 +92,7 @@ func knockback():
 # 死亡モーション
 func dead_motion():
 	await fall_motion(Vector2(0,-300))
-	
+
 # 落下モーション
 func fall_motion(velocity:Vector2):
 	# 落下中は、move_and_slide()させない
@@ -111,4 +110,3 @@ func fall_motion(velocity:Vector2):
 	n_anim.hide()
 	is_fall_motion=false
 
-	

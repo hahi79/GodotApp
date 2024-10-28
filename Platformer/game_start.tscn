@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://r11p2x11ales"]
+[gd_scene load_steps=2 format=3 uid="uid://vncfg73xy48p"]
 
-[ext_resource type="Script" path="res://out_game.gd" id="1_osno7"]
+[ext_resource type="Script" path="res://out_game.gd" id="1_ygara"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
-script = ExtResource("1_osno7")
+script = ExtResource("1_ygara")
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 8
@@ -11,10 +11,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -100.0
-offset_right = 300.0
-offset_bottom = 100.0
+offset_left = -294.0
+offset_top = -99.0
+offset_right = 306.0
+offset_bottom = 101.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 70

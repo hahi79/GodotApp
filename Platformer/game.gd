@@ -28,27 +28,27 @@ func main():
 		await game()
 
 func game():		
-	# ゲーム初期化
+	#== ゲーム初期化
 	hp=HP_MAX
 	coin=0
 	n_hud.set_health_max(HP_MAX)
 	n_hud.set_health(hp)
 	n_hud.set_coin(coin)
-	# スタート画面
+	#== スタート画面
 	n_hud.hide()
 	await exec_scene(Scene.GAME_START)
-	# ゲーム画面
+	#== ゲーム画面
 	n_sound.play_bgm()
 	n_hud.show()
 	await exec_scene(Scene.STAGE_1)
 	n_hud.hide()
 	n_sound.stop_bgm()
-	# ゲームオーバ画面またはゲームクリア画面
+	#== ゲームオーバ画面またはゲームクリア画面
 	if scene_result==Scene.GAME_CLEAR:
 		await exec_scene(Scene.GAME_CLEAR)
 	else:
 		await exec_scene(Scene.GAME_OVER)
-	
+
 # シーンを実行
 func exec_scene(id):
 	var scene_path
@@ -63,14 +63,15 @@ func exec_scene(id):
 			scene_path="res://stage_1.tscn"
 
 	scene_result=Result.NONE
-	#print("before change scene(%s)\n"%scene_path)
+	# print("before change scene(%s)\n"%scene_path)
 	get_tree().change_scene_to_file(scene_path)
-	#print("after change scene(%s)\n"%scene_path)
+	# print("after change scene(%s)\n"%scene_path)
 	while scene_result==Result.NONE:
 		await wait_sec(0.1)
+
 # シーンリザルトをセット	
 func set_scene_result(id):
-	print("set_scene_result(%d)"%id)
+	# print("set_scene_result(%d)"%id)
 	scene_result=id
 
 # Called when the node enters the scene tree for the first time.

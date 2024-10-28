@@ -20,4 +20,3 @@ func stop_bgm():
 func play_se(id):
 	if 0<=id and id<n_se_list.size():
 		n_se_list[id].play()
-

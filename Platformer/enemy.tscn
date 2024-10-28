@@ -1,40 +1,41 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3ybj1u3esa0v"]
+[gd_scene load_steps=6 format=3 uid="uid://bed17vsbkb1py"]
 
-[ext_resource type="Script" path="res://enemy.gd" id="1_seho6"]
-[ext_resource type="Texture2D" uid="uid://cau4ue4iqb7o6" path="res://assets/teki.png" id="2_axobu"]
+[ext_resource type="Texture2D" uid="uid://cfn520auwwg5t" path="res://assets/teki.png" id="1_e2c3p"]
+[ext_resource type="Script" path="res://enemy.gd" id="1_q63mj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eyd6v"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wc7f5"]
 size = Vector2(34, 40)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_74m71"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lp81"]
 size = Vector2(27, 4)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_udg6t"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mtfa"]
 size = Vector2(40, 35)
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("n_sprite")]
-script = ExtResource("1_seho6")
+script = ExtResource("1_q63mj")
 n_sprite = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(2.5, 2.5)
-texture = ExtResource("2_axobu")
+texture = ExtResource("1_e2c3p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_eyd6v")
+shape = SubResource("RectangleShape2D_wc7f5")
 
 [node name="WeakArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeakArea"]
 position = Vector2(0, -20)
-shape = SubResource("RectangleShape2D_74m71")
+shape = SubResource("RectangleShape2D_8lp81")
 
 [node name="AttackArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(0, 2.5)
-shape = SubResource("RectangleShape2D_udg6t")
+shape = SubResource("RectangleShape2D_6mtfa")
+disabled = true
 
 [connection signal="body_entered" from="WeakArea" to="." method="_on_weak_area_body_entered"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

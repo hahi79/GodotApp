@@ -3,7 +3,7 @@ extends CanvasLayer
 var n_game
 
 func _ready():
-	n_game=al_game
+	n_game=al_game # get_node("Game")
 
 # 入力イベント処理
 func _input(event):
