@@ -1,0 +1,196 @@
+[gd_scene load_steps=11 format=3 uid="uid://b6h5c5phwhw4w"]
+
+[ext_resource type="Script" path="res://escenas/menu.gd" id="1_q7d2i"]
+[ext_resource type="TileSet" uid="uid://cprxxxdk0ffw8" path="res://graficos/suelos.tres" id="2_aqkbh"]
+[ext_resource type="Script" path="res://escenas/suelo_menu.gd" id="3_n4ngf"]
+[ext_resource type="FontFile" uid="uid://lbwau4sft76g" path="res://fonts/Kenney Mini.ttf" id="3_q6ee5"]
+[ext_resource type="Texture2D" uid="uid://bsc866s6uky11" path="res://graficos/logo gda 55 flat min.png" id="4_0jied"]
+[ext_resource type="Texture2D" uid="uid://cq1rrswpefcw8" path="res://graficos/ships/ship_0002.png" id="6_5di42"]
+[ext_resource type="Script" path="res://escenas/avion_menu.gd" id="7_cdhdm"]
+[ext_resource type="Texture2D" uid="uid://cpbrhk65jml7i" path="res://graficos/logo gda 56.png" id="8_aottv"]
+[ext_resource type="AudioStream" uid="uid://x7vo818bege7" path="res://audio/quantum_2_percu_2.mp3" id="9_ql27b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_21v32"]
+bg_color = Color(0.881937, 0.881937, 0.881937, 1)
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_q7d2i")
+metadata/_edit_vertical_guides_ = [50.0]
+
+[node name="SueloMenu" type="TileMap" parent="."]
+z_index = -2
+position = Vector2(-1, 0)
+scale = Vector2(3, 3)
+tile_set = ExtResource("2_aqkbh")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 524288, 9, 65536, 524288, 9, 131072, 524288, 9, 196608, 524288, 9, 262144, 524288, 9, 1, 524288, 9, 65537, 524288, 9, 131073, 524288, 9, 196609, 524288, 9, 262145, 524288, 9, 2, 524288, 9, 65538, 524288, 9, 131074, 524288, 9, 196610, 524288, 9, 262146, 524288, 9, 3, 524288, 9, 65539, 524288, 9, 131075, 524288, 9, 196611, 524288, 9, 262147, 524288, 9, 4, 524288, 9, 65540, 524288, 9, 131076, 524288, 9, 196612, 524288, 9, 262148, 524288, 9, 5, 524288, 9, 65541, 524288, 9, 131077, 524288, 9, 196613, 524288, 9, 262149, 524288, 9, 6, 524288, 9, 65542, 524288, 9, 131078, 524288, 9, 196614, 524288, 9, 262150, 524288, 9, -65536, 524288, 3, -65535, 524288, 3, -65534, 524288, 3, -65533, 524288, 3, -65532, 524288, 3, -65531, 524288, 3, -65530, 524288, 3, -131072, 393216, 3, -131071, 393216, 3, -131070, 393216, 3, -131069, 393216, 3, -131068, 393216, 3, -131067, 393216, 3, -131066, 393216, 3, -196608, 393216, 3, -196607, 393216, 3, -196606, 393216, 3, -196605, 393216, 3, -196604, 393216, 3, -196603, 393216, 3, -196602, 393216, 3, -262144, 393216, 3, -262143, 393216, 3, -262142, 393216, 3, -262141, 393216, 3, -262140, 393216, 3, -262139, 393216, 3, -262138, 393216, 3, -327680, 393216, 3, -327679, 393216, 3, -327678, 393216, 3, -327677, 393216, 3, -327676, 393216, 3, -327675, 393216, 3, -327674, 393216, 3, -393216, 131072, 5, -393215, 131072, 5, -393214, 131072, 5, -393213, 131072, 5, -393212, 131072, 5, -393211, 131072, 5, -393210, 131072, 5, -458752, 131072, 4, -458751, 131072, 4, -458750, 131072, 4, -458749, 131072, 4, -458748, 131072, 4, -458747, 131072, 4, -458746, 131072, 4, -524288, 131072, 4, -524287, 131072, 4, -524286, 131072, 4, -524285, 131072, 4, -524284, 131072, 4, -524283, 131072, 4, -524282, 131072, 4, -589824, 131072, 4, -589823, 131072, 4, -589822, 131072, 4, -589821, 131072, 4, -589820, 131072, 4, -589819, 131072, 4, -589818, 131072, 4, -655360, 131072, 4, -655359, 131072, 4, -655358, 131072, 4, -655357, 131072, 4, -655356, 131072, 4, -655355, 131072, 4, -655354, 131072, 4, -720896, 131072, 3, -720895, 131072, 3, -720894, 131072, 3, -720893, 131072, 3, -720892, 131072, 3, -720891, 131072, 3, -720890, 131072, 3, -983040, 393216, 3, -917504, 393216, 3, -851968, 393216, 3, -786432, 393216, 3, -983039, 393216, 3, -917503, 393216, 3, -851967, 393216, 3, -786431, 393216, 3, -983038, 393216, 3, -917502, 393216, 3, -851966, 393216, 3, -786430, 393216, 3, -983037, 393216, 3, -917501, 393216, 3, -851965, 393216, 3, -786429, 393216, 3, -983036, 393216, 3, -917500, 393216, 3, -851964, 393216, 3, -786428, 393216, 3, -983035, 393216, 3, -917499, 393216, 3, -851963, 393216, 3, -786427, 393216, 3, -983034, 393216, 3, -917498, 393216, 3, -851962, 393216, 3, -786426, 393216, 3, -1048576, 524288, 5, -1048575, 524288, 5, -1048574, 524288, 5, -1048573, 524288, 5, -1048572, 524288, 5, -1048571, 524288, 5, -1048570, 524288, 5, -1376256, 524288, 9, -1310720, 524288, 9, -1245184, 524288, 9, -1179648, 524288, 9, -1114112, 524288, 9, -1376255, 524288, 9, -1310719, 524288, 9, -1245183, 524288, 9, -1179647, 524288, 9, -1114111, 524288, 9, -1376254, 524288, 9, -1310718, 524288, 9, -1245182, 524288, 9, -1179646, 524288, 9, -1114110, 524288, 9, -1376253, 524288, 9, -1310717, 524288, 9, -1245181, 524288, 9, -1179645, 524288, 9, -1114109, 524288, 9, -1376252, 524288, 9, -1310716, 524288, 9, -1245180, 524288, 9, -1179644, 524288, 9, -1114108, 524288, 9, -1376251, 524288, 9, -1310715, 524288, 9, -1245179, 524288, 9, -1179643, 524288, 9, -1114107, 524288, 9, -1376250, 524288, 9, -1310714, 524288, 9, -1245178, 524288, 9, -1179642, 524288, 9, -1114106, 524288, 9)
+script = ExtResource("3_n4ngf")
+
+[node name="Titulo" type="Label" parent="."]
+offset_left = 83.0
+offset_top = 2.0
+offset_right = 289.0
+offset_bottom = 65.0
+theme_override_colors/font_color = Color(0.934, 1, 0.00999999, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_q6ee5")
+theme_override_font_sizes/font_size = 40
+text = "Aviones"
+
+[node name="Nivel1" type="Button" parent="."]
+visible = false
+offset_left = 50.0
+offset_top = 91.0
+offset_right = 110.0
+offset_bottom = 122.0
+focus_neighbor_top = NodePath("../LogoGDA")
+focus_neighbor_bottom = NodePath("../Exit")
+focus_next = NodePath("../Exit")
+focus_previous = NodePath("../LogoGDA")
+theme_override_colors/font_color = Color(0, 0.776471, 0.682353, 1)
+theme_override_fonts/font = ExtResource("3_q6ee5")
+text = "Nivel 1"
+
+[node name="Exit" type="Button" parent="."]
+visible = false
+offset_left = 50.0
+offset_top = 128.0
+offset_right = 98.0
+offset_bottom = 159.0
+focus_neighbor_top = NodePath("../Nivel1")
+focus_neighbor_bottom = NodePath("../LogoGDA")
+focus_next = NodePath("../LogoGDA")
+focus_previous = NodePath("../Nivel1")
+theme_override_colors/font_color = Color(0, 0.776471, 0.682353, 1)
+theme_override_fonts/font = ExtResource("3_q6ee5")
+text = "Salir"
+
+[node name="LogoGDA" type="Button" parent="."]
+visible = false
+offset_left = 244.0
+offset_top = 208.0
+offset_right = 407.0
+offset_bottom = 266.0
+scale = Vector2(0.5, 0.5)
+focus_neighbor_top = NodePath("../Exit")
+focus_neighbor_bottom = NodePath("../Nivel1")
+focus_next = NodePath("../Nivel1")
+focus_previous = NodePath("../Exit")
+icon = ExtResource("4_0jied")
+flat = true
+expand_icon = true
+
+[node name="AvionMenu" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(200, 125)
+scale = Vector2(3, 3)
+texture = ExtResource("6_5di42")
+script = ExtResource("7_cdhdm")
+
+[node name="Sombra" type="Sprite2D" parent="AvionMenu"]
+visible = false
+modulate = Color(0, 0, 0, 0.529412)
+z_index = -1
+position = Vector2(2.66667, 3.66667)
+texture = ExtResource("6_5di42")
+
+[node name="GDA" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="PopupPanel" type="PopupPanel" parent="GDA"]
+position = Vector2i(-320, 0)
+size = Vector2i(320, 240)
+theme_override_styles/panel = SubResource("StyleBoxFlat_21v32")
+
+[node name="Control" type="Control" parent="GDA/PopupPanel"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 320.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GDA/PopupPanel/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GDA/PopupPanel/Control/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="GDA/PopupPanel/Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("8_aottv")
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="GDA/PopupPanel/Control/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label1" type="Label" parent="GDA/PopupPanel/Control/VBoxContainer/HBoxContainer5"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2233, 0.514873, 0.77, 1)
+theme_override_colors/font_shadow_color = Color(0.588235, 0.588235, 0.588235, 1)
+theme_override_fonts/font = ExtResource("3_q6ee5")
+theme_override_font_sizes/font_size = 18
+text = "Crea tus propios videojuegos"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="GDA/PopupPanel/Control/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="GDA/PopupPanel/Control/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.294667, 0.255, 0.85, 1)
+theme_override_colors/font_shadow_color = Color(0.59, 0.59, 0.59, 1)
+theme_override_fonts/font = ExtResource("3_q6ee5")
+theme_override_font_sizes/font_size = 20
+text = "Yo te enseño"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="GDA/PopupPanel/Control/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BotonGDA" type="Button" parent="GDA/PopupPanel/Control/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_q6ee5")
+text = "gamedevargentina.com"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="GDA/PopupPanel/Control/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="GDA/PopupPanel/Control/VBoxContainer/HBoxContainer6"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.299547, 0.299547, 0.299547, 1)
+theme_override_fonts/font = ExtResource("3_q6ee5")
+theme_override_font_sizes/font_size = 13
+text = "Assets de Kenney.nl"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="GDA/PopupPanel/Control/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BotonVolver" type="Button" parent="GDA/PopupPanel/Control/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_q6ee5")
+text = "volver"
+
+[node name="Musica" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ql27b")
+autoplay = true
+
+[connection signal="pressed" from="Nivel1" to="." method="_on_nivel_1_pressed"]
+[connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="LogoGDA" to="." method="_on_logo_gda_pressed"]
+[connection signal="pressed" from="GDA/PopupPanel/Control/VBoxContainer/HBoxContainer3/BotonGDA" to="." method="_on_boton_gda_pressed"]
+[connection signal="pressed" from="GDA/PopupPanel/Control/VBoxContainer/HBoxContainer4/BotonVolver" to="." method="_on_boton_volver_pressed"]

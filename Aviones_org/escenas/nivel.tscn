@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmtije1fhbu2p"]
+
+[ext_resource type="Script" path="res://escenas/nivel.gd" id="1_74vp6"]
+[ext_resource type="PackedScene" uid="uid://c4x6a8j05q4af" path="res://escenas/suelos.tscn" id="1_fwcjr"]
+[ext_resource type="PackedScene" uid="uid://byb1iiclqdo2o" path="res://escenas/jugador.tscn" id="2_lp3f2"]
+[ext_resource type="Script" path="res://escenas/spawner.gd" id="3_ymkps"]
+[ext_resource type="AudioStream" uid="uid://bexkwv0od8ect" path="res://audio/quantum_2.mp3" id="4_hssu1"]
+[ext_resource type="FontFile" uid="uid://lbwau4sft76g" path="res://fonts/Kenney Mini.ttf" id="6_h0b2w"]
+
+[node name="Nivel" type="Node2D"]
+script = ExtResource("1_74vp6")
+metadata/_edit_horizontal_guides_ = [-2699.0]
+
+[node name="Suelos" parent="." instance=ExtResource("1_fwcjr")]
+
+[node name="Jugador" parent="." instance=ExtResource("2_lp3f2")]
+unique_name_in_owner = true
+position = Vector2(160, 220)
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("3_ymkps")
+
+[node name="Timer" type="Timer" parent="Spawner"]
+wait_time = 2.0
+autostart = true
+
+[node name="Musica" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hssu1")
+volume_db = -5.0
+autoplay = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Puntos" type="Label" parent="UI"]
+offset_left = 10.0
+offset_top = 3.0
+offset_right = 70.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_h0b2w")
+text = "puntos: 0"
+
+[node name="GameOver" type="Label" parent="UI"]
+visible = false
+offset_left = 117.0
+offset_top = 98.0
+offset_right = 209.0
+offset_bottom = 121.0
+theme_override_colors/font_color = Color(0.780392, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_h0b2w")
+text = "Game Over"
+
+[node name="NivelCompletado" type="Label" parent="UI"]
+visible = false
+offset_left = 94.0
+offset_top = 98.0
+offset_right = 236.0
+offset_bottom = 121.0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0.624, 0.78, 1)
+theme_override_fonts/font = ExtResource("6_h0b2w")
+text = "Nivel completado"
+
+[node name="TimerDificultad" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="juego_terminado" from="Jugador" to="." method="juego_terminado"]
+[connection signal="nivel_completado" from="Jugador" to="." method="nivel_completado"]
+[connection signal="timeout" from="Spawner/Timer" to="Spawner" method="_on_timer_timeout"]
+[connection signal="timeout" from="TimerDificultad" to="." method="_on_timer_difi_timeout"]
