@@ -18,14 +18,12 @@ func _on_difficult_timer_timeout():
 
 # プレーヤのgame_overシグナル
 func _on_player_game_over():
-	Game.set_play_out()
 	Hud.show_game_over()
 	await Game.wait_sec(3)
 	Game.set_scene_result(Game.SCENE_NEXT)
 
 # プレーヤのlevel_completeシグナル
 func _on_player_level_complete():
-	Game.set_play_out()
 	Hud.show_complete()
 	await Game.wait_sec(3)
 	Game.set_scene_result(Game.SCENE_NEXT)

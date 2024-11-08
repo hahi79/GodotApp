@@ -14,7 +14,7 @@ func apply_difficulty():
 	if wait_time >= 0.25:
 		n_timer.wait_time = wait_time
 
-# タイマーのtimeour
+# タイマーのtimeout
 func _on_timer_timeout():
 	if Game.is_play_out:
 		return

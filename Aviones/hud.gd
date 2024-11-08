@@ -21,7 +21,7 @@ func start_level():
 	n_complete.hide()
 	show()
 # タイトルスタート
-func start_ttile():
+func start_title():
 	hide()
 # Game Overを表示
 func show_game_over():

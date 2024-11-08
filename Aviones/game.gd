@@ -1,7 +1,7 @@
 extends Node
 
-@export var bullet_scene : PackedScene = preload("res://bullet.tscn")
-@export var enemy_scene : Array[PackedScene]=[
+var bullet_scene : PackedScene = preload("res://bullet.tscn")
+var enemy_scene : Array[PackedScene]=[
 	preload("res://enemy_01.tscn"),
 	preload("res://enemy_02.tscn"),
 	preload("res://enemy_03.tscn")
@@ -35,9 +35,10 @@ func _ready():
 
 func game():
 	score=0
+	Hud.print_score(score)
 	level_difficulty=0
 	is_play_out = false
-	Hud.start_ttile()
+	Hud.start_title()
 	Sound.play_bgm(Sound.BGM_TITLE)
 	await exec_scene("res://title.tscn")
 	Hud.start_level()

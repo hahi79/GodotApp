@@ -48,6 +48,7 @@ func _process(delta):
 		shoot()
 	# マップ終わり?
 	if position.y <= FINISH_LEVEL:
+		Game.set_play_out()
 		can_shot = false
 		set_collision_active(false)
 		level_complete.emit()
@@ -68,6 +69,7 @@ func _on_area_entered(area):
 	if Game.is_play_out:
 		return
 	if area.is_in_group("enemy"):
+		Game.set_play_out()
 		set_collision_active(false)
 		n_anim.frame = 1
 		n_anim.play("explode")
