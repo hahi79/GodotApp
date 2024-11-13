@@ -108,5 +108,5 @@ func fall_motion(velocity:Vector2):
 		velocity.y += gravity * delta
 		n_anim.position += velocity * delta
 	n_anim.hide()
-	is_fall_motion=false
+	# is_fall_motion=false
 
