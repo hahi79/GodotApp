@@ -1,10 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bm3l1sjmtprfq"]
+[gd_scene load_steps=3 format=3 uid="uid://bk5o7hlmgno3h"]
 
-[ext_resource type="Script" path="res://hud.gd" id="1_o44br"]
-[ext_resource type="FontFile" uid="uid://dpaoavn6qbt1s" path="res://assets/fonts/Kenney Mini.ttf" id="2_5lbry"]
+[ext_resource type="FontFile" uid="uid://bpvv0osjt2364" path="res://assets/fonts/Kenney Mini.ttf" id="1_3l63a"]
+[ext_resource type="Script" path="res://hud.gd" id="1_82c61"]
 
 [node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("n_score", "n_game_over", "n_complete")]
-script = ExtResource("1_o44br")
+script = ExtResource("1_82c61")
 n_score = NodePath("Label")
 n_game_over = NodePath("Label2")
 n_complete = NodePath("Label3")
@@ -12,11 +12,13 @@ n_complete = NodePath("Label3")
 [node name="Label" type="Label" parent="."]
 offset_left = 10.0
 offset_top = 3.0
-offset_right = 79.0
+offset_right = 75.0
 offset_bottom = 26.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_5lbry")
-text = "Score : 0 "
+theme_override_fonts/font = ExtResource("1_3l63a")
+text = "Score : 0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
 visible = false
@@ -25,15 +27,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -43.5
+offset_left = -44.0
 offset_top = -11.5
-offset_right = 43.5
-offset_bottom = 11.5
+offset_right = 56.0
+offset_bottom = 18.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.780392, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_5lbry")
-text = "Game Over"
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_3l63a")
+text = "Game Over
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="."]
 visible = false
@@ -42,12 +47,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -59.5
-offset_top = -11.5
-offset_right = 59.5
-offset_bottom = 11.5
+offset_left = -63.0
+offset_top = -21.5
+offset_right = 63.0
+offset_bottom = 21.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0.623529, 0.780392, 1)
-theme_override_fonts/font = ExtResource("2_5lbry")
-text = "Level Complete"
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_3l63a")
+text = "Level Complete
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1

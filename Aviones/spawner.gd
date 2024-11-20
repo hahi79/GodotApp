@@ -21,8 +21,10 @@ func _on_timer_timeout():
 	var sel
 	if Game.level_difficulty<=3:
 		sel = randi_range(1,2)
-	else:
+	elif Game.level_difficulty<=7:
 		sel = randi_range(1,3)
+	else:
+		sel = randi_range(2,4)
 	
 	var x = randi_range(16,Game.SCREEN_WIDTH-16)
 	var y = Game.get_player_position().y - Game.SCREEN_HEIGHT
@@ -35,7 +37,11 @@ func _on_timer_timeout():
 			id=Game.ENEMY_02
 		3:
 			id=Game.ENEMY_03
+		4:
+			id=Game.ENEMY_04
+			x=randi_range(16,Game.SCREEN_WIDTH/2)
+			y=Game.get_player_position().y - Game.SCREEN_HEIGHT*1.8
+			pos=Vector2(x,y)
 		_:
 			print("illegal sel")
 	Game.create_enemy(id,pos,self)
-	

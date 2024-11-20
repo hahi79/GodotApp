@@ -23,4 +23,6 @@ func _on_return_pressed():
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	tween.tween_property(n_popup_panel, "position", Vector2i(-320, 0), 1)
 	tween.tween_callback(n_popup_panel.hide)
-
+# GDAメニューがアクディブか?
+func is_active():
+	return n_popup_panel.visible

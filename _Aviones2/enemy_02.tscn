@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://ccvoc136t8x77"]
+
+[ext_resource type="Script" path="res://enemy_02.gd" id="1_gileo"]
+[ext_resource type="Texture2D" uid="uid://c8d2xmhj4mdyd" path="res://assets/image/ships/ship_0007.png" id="2_46quh"]
+[ext_resource type="Texture2D" uid="uid://bv0bx66c61b0r" path="res://assets/image/tiles/tile_0004.png" id="2_75sci"]
+[ext_resource type="Texture2D" uid="uid://muyukaiygxse" path="res://assets/image/tiles/tile_0005.png" id="3_ei8im"]
+[ext_resource type="Texture2D" uid="uid://dutegfd3rf026" path="res://assets/image/tiles/tile_0006.png" id="4_eit1b"]
+[ext_resource type="Texture2D" uid="uid://hcvfxqvcr8xj" path="res://assets/image/tiles/tile_0007.png" id="5_jvytl"]
+[ext_resource type="Texture2D" uid="uid://cxgnh3tmwy6f0" path="res://assets/image/tiles/tile_0008.png" id="6_n3s5c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_chhdn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_46quh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_75sci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ei8im")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_eit1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jvytl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_n3s5c")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1cvn3"]
+custom_solver_bias = 1.0
+size = Vector2(24, 8)
+
+[node name="Enemy_02" type="Area2D" node_paths=PackedStringArray("n_shadow", "n_anim")]
+script = ExtResource("1_gileo")
+n_shadow = NodePath("Sprite2D")
+n_anim = NodePath("AnimatedSprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.372549)
+position = Vector2(3, 3)
+texture = ExtResource("2_46quh")
+flip_v = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_chhdn")
+animation = &"explode"
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1cvn3")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

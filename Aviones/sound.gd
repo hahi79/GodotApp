@@ -1,11 +1,11 @@
 extends Node
 
-@export var n_bgm_list: Array[AudioStreamPlayer]
 @export var n_se_list: Array[AudioStreamPlayer]
+@export var n_bgm_list: Array[AudioStreamPlayer]
 
 enum{
-	BGM_TITLE = 0,
-	BGM_LEVEL= 1,
+	BGM_LEVEL= 0,
+	BGM_TITLE = 1,
 	BGM_NONE = -1,
 }
 enum{

@@ -1,62 +1,60 @@
-[gd_scene load_steps=10 format=3 uid="uid://bm66kcksg00se"]
+[gd_scene load_steps=10 format=3 uid="uid://bxtdo77fty4wf"]
 
-[ext_resource type="Script" path="res://enemy_03.gd" id="1_quxsr"]
-[ext_resource type="Texture2D" uid="uid://dbo7mtvqcpa1d" path="res://assets/image/ships/ship_0008.png" id="2_brgka"]
-[ext_resource type="Texture2D" uid="uid://cy60gko32ldu1" path="res://assets/image/tiles/tile_0004.png" id="3_nfylu"]
-[ext_resource type="Texture2D" uid="uid://diu1u7tsqc0g3" path="res://assets/image/tiles/tile_0005.png" id="4_absjr"]
-[ext_resource type="Texture2D" uid="uid://bfw8k45x5q227" path="res://assets/image/tiles/tile_0006.png" id="5_3uvgl"]
-[ext_resource type="Texture2D" uid="uid://cl2bcot0hbxy1" path="res://assets/image/tiles/tile_0007.png" id="6_qqcjd"]
-[ext_resource type="Texture2D" uid="uid://c4guhna54yg3g" path="res://assets/image/tiles/tile_0008.png" id="7_ch85s"]
+[ext_resource type="Texture2D" uid="uid://bsubp6ab2ed4w" path="res://assets/image/ships/ship_0008.png" id="1_5mrrj"]
+[ext_resource type="Script" path="res://enemy_03.gd" id="1_dland"]
+[ext_resource type="Texture2D" uid="uid://d04gcs3lb6ygf" path="res://assets/image/tiles/tile_0004.png" id="2_071yu"]
+[ext_resource type="Texture2D" uid="uid://du56u8qx801mm" path="res://assets/image/tiles/tile_0005.png" id="3_1v1l6"]
+[ext_resource type="Texture2D" uid="uid://bh3l8foss8gy0" path="res://assets/image/tiles/tile_0006.png" id="4_hic0a"]
+[ext_resource type="Texture2D" uid="uid://bgskmd064q8bg" path="res://assets/image/tiles/tile_0007.png" id="5_pkdug"]
+[ext_resource type="Texture2D" uid="uid://n27qbwt3chrs" path="res://assets/image/tiles/tile_0008.png" id="6_byqnw"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_hay6b"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_7sl3l"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_brgka")
+"texture": ExtResource("1_5mrrj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_nfylu")
+"texture": ExtResource("2_071yu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_absjr")
+"texture": ExtResource("3_1v1l6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_3uvgl")
+"texture": ExtResource("4_hic0a")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_qqcjd")
+"texture": ExtResource("5_pkdug")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_ch85s")
+"texture": ExtResource("6_byqnw")
 }],
 "loop": false,
 "name": &"explode",
-"speed": 8.0
+"speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kf5en"]
-size = Vector2(26, 8)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtj18"]
+size = Vector2(20, 8)
 
-[node name="Enemy_03" type="Area2D" node_paths=PackedStringArray("n_anim", "n_shadow") groups=["enemy"]]
-script = ExtResource("1_quxsr")
-n_anim = NodePath("AnimatedSprite2D")
+[node name="Enemy_03" type="Area2D" node_paths=PackedStringArray("n_shadow", "n_anim") groups=["enemy"]]
+script = ExtResource("1_dland")
 n_shadow = NodePath("Sprite2D")
+n_anim = NodePath("AnimatedSprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.372549)
-texture_filter = 1
 position = Vector2(3, 3)
-texture = ExtResource("2_brgka")
-flip_v = true
+texture = ExtResource("1_5mrrj")
+region_filter_clip_enabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_hay6b")
+sprite_frames = SubResource("SpriteFrames_7sl3l")
 animation = &"explode"
 flip_v = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_kf5en")
+shape = SubResource("RectangleShape2D_gtj18")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

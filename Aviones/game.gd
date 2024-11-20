@@ -4,13 +4,15 @@ var bullet_scene : PackedScene = preload("res://bullet.tscn")
 var enemy_scene : Array[PackedScene]=[
 	preload("res://enemy_01.tscn"),
 	preload("res://enemy_02.tscn"),
-	preload("res://enemy_03.tscn")
+	preload("res://enemy_03.tscn"),
+	preload("res://enemy_04.tscn"),
 ]
 # エネミー種別
 enum{
 	ENEMY_01,
 	ENEMY_02,
 	ENEMY_03,
+	ENEMY_04,
 }
 # ノード
 var n_player : Node2D
@@ -29,7 +31,7 @@ enum{
 }
 
 func _ready():
-	while true:
+	while true: ###　あとで trueに差し替えます
 		n_player=null
 		await game()
 
@@ -87,4 +89,6 @@ func set_play_out():
 	is_play_out=true
 # プレーヤの位置取得
 func get_player_position():
+	if n_player==null:
+		return Vector2(160,120)
 	return n_player.position

@@ -1,21 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://ukkawoycudqr"]
+[gd_scene load_steps=5 format=3 uid="uid://c4xo8s80domeg"]
 
-[ext_resource type="Script" path="res://level.gd" id="1_16f1u"]
-[ext_resource type="PackedScene" uid="uid://doq8hw8hpk5ua" path="res://level_map.tscn" id="1_vx6e4"]
-[ext_resource type="PackedScene" uid="uid://bsw7udvboxvgj" path="res://player.tscn" id="2_hqo2q"]
-[ext_resource type="Script" path="res://spawner.gd" id="4_hfdnn"]
+[ext_resource type="Script" path="res://level.gd" id="1_wk1to"]
+[ext_resource type="PackedScene" uid="uid://bxpe55dmrenq8" path="res://level_map.tscn" id="2_3jqro"]
+[ext_resource type="PackedScene" uid="uid://bihaetgc3tf6k" path="res://player.tscn" id="3_vopwp"]
+[ext_resource type="Script" path="res://spawner.gd" id="4_eqdb5"]
 
 [node name="Level" type="Node2D" node_paths=PackedStringArray("n_player", "n_spawner")]
-script = ExtResource("1_16f1u")
+script = ExtResource("1_wk1to")
 n_player = NodePath("LevelMap/Player")
 n_spawner = NodePath("Spawner")
 
-[node name="LevelMap" parent="." instance=ExtResource("1_vx6e4")]
+[node name="LevelMap" parent="." instance=ExtResource("2_3jqro")]
 
-[node name="Player" parent="LevelMap" instance=ExtResource("2_hqo2q")]
+[node name="Player" parent="LevelMap" instance=ExtResource("3_vopwp")]
 
 [node name="Spawner" type="Node2D" parent="." node_paths=PackedStringArray("n_timer")]
-script = ExtResource("4_hfdnn")
+script = ExtResource("4_eqdb5")
 n_timer = NodePath("Timer")
 
 [node name="Timer" type="Timer" parent="Spawner"]

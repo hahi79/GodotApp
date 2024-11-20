@@ -25,7 +25,7 @@ func print_hp():
 func init(is_player):
 	is_player_side=is_player
 	var idx = 0
-	if is_player:
+	if is_player==false:
 		idx=1	
 	n_sprite.texture = castle_image[ idx ]
 	hp=max_hp

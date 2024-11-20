@@ -1,22 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://be3nwh5gbhnlw"]
+[gd_scene load_steps=5 format=3 uid="uid://cgxbjhertpho"]
 
-[ext_resource type="Script" path="res://gda.gd" id="1_6mo41"]
-[ext_resource type="Texture2D" uid="uid://d15j854pu7s4b" path="res://assets/logo gda 56.png" id="2_34llh"]
-[ext_resource type="FontFile" uid="uid://dpaoavn6qbt1s" path="res://assets/fonts/Kenney Mini.ttf" id="3_fq6o8"]
+[ext_resource type="Script" path="res://gda.gd" id="1_g33gs"]
+[ext_resource type="Texture2D" uid="uid://majc1rdooq8p" path="res://assets/image/logo gda 56.png" id="1_g47fo"]
+[ext_resource type="FontFile" uid="uid://bpvv0osjt2364" path="res://assets/fonts/Kenney Mini.ttf" id="2_rcneo"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k7mqx"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fhqxg"]
 bg_color = Color(0.882353, 0.882353, 0.882353, 1)
 
 [node name="GDA" type="CanvasLayer" node_paths=PackedStringArray("n_popup_panel", "n_url_button")]
-script = ExtResource("1_6mo41")
+script = ExtResource("1_g33gs")
 n_popup_panel = NodePath("PopupPanel")
 n_url_button = NodePath("PopupPanel/Control/VBoxContainer/HBoxContainer4/URL")
 
 [node name="PopupPanel" type="PopupPanel" parent="."]
 position = Vector2i(-320, 0)
 size = Vector2i(320, 240)
-visible = true
-theme_override_styles/panel = SubResource("StyleBoxFlat_k7mqx")
+theme_override_styles/panel = SubResource("StyleBoxFlat_fhqxg")
 
 [node name="Control" type="Control" parent="PopupPanel"]
 layout_mode = 3
@@ -42,9 +41,8 @@ layout_mode = 2
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="PopupPanel/Control/VBoxContainer/HBoxContainer"]
-texture_filter = 1
 layout_mode = 2
-texture = ExtResource("2_34llh")
+texture = ExtResource("1_g47fo")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PopupPanel/Control/VBoxContainer"]
 layout_mode = 2
@@ -54,7 +52,7 @@ alignment = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.223529, 0.513726, 0.768627, 1)
 theme_override_colors/font_shadow_color = Color(0.588235, 0.588235, 0.588235, 1)
-theme_override_fonts/font = ExtResource("3_fq6o8")
+theme_override_fonts/font = ExtResource("2_rcneo")
 theme_override_font_sizes/font_size = 18
 text = "Create your own video games"
 
@@ -65,8 +63,7 @@ alignment = 1
 [node name="Label" type="Label" parent="PopupPanel/Control/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.294118, 0.254902, 0.85098, 1)
-theme_override_colors/font_shadow_color = Color(0.592157, 0.592157, 0.592157, 1)
-theme_override_fonts/font = ExtResource("3_fq6o8")
+theme_override_fonts/font = ExtResource("2_rcneo")
 theme_override_font_sizes/font_size = 20
 text = "I teach you"
 
@@ -77,7 +74,7 @@ alignment = 1
 [node name="URL" type="Button" parent="PopupPanel/Control/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_fq6o8")
+theme_override_fonts/font = ExtResource("2_rcneo")
 text = "gamedevargentina.com"
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="PopupPanel/Control/VBoxContainer"]
@@ -87,8 +84,8 @@ alignment = 1
 [node name="Label" type="Label" parent="PopupPanel/Control/VBoxContainer/HBoxContainer5"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.298039, 0.298039, 0.298039, 1)
-theme_override_fonts/font = ExtResource("3_fq6o8")
-theme_override_font_sizes/font_size = 13
+theme_override_fonts/font = ExtResource("2_rcneo")
+theme_override_font_sizes/font_size = 18
 text = "Assets of Kenney.nl"
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="PopupPanel/Control/VBoxContainer"]
@@ -98,9 +95,8 @@ alignment = 1
 [node name="Return" type="Button" parent="PopupPanel/Control/VBoxContainer/HBoxContainer6"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_fq6o8")
-text = "return
-"
+theme_override_fonts/font = ExtResource("2_rcneo")
+text = "return"
 
 [connection signal="pressed" from="PopupPanel/Control/VBoxContainer/HBoxContainer4/URL" to="." method="_on_url_pressed"]
 [connection signal="pressed" from="PopupPanel/Control/VBoxContainer/HBoxContainer6/Return" to="." method="_on_return_pressed"]

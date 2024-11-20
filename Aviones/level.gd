@@ -15,6 +15,7 @@ func _ready():
 func _on_difficult_timer_timeout():
 	Game.add_difficulty()
 	n_spawner.apply_difficulty()
+	print("difficult:%d" % Game.level_difficulty)
 
 # プレーヤのgame_overシグナル
 func _on_player_game_over():

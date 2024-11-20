@@ -4,8 +4,8 @@ class_name Player
 signal level_complete
 signal game_over
 
-@export var n_anim : AnimatedSprite2D
 @export var n_shadow : Sprite2D
+@export var n_anim : AnimatedSprite2D
 @export var n_shot_disable_timer : Timer
 
 const CANNON_OFFS : Vector2 =Vector2(0,20)  # 砲頭オフセット
@@ -52,7 +52,7 @@ func _process(delta):
 		can_shot = false
 		set_collision_active(false)
 		level_complete.emit()
-	
+
 # 弾発射
 func shoot():
 	var pos = global_position - CANNON_OFFS

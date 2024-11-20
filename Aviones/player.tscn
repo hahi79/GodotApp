@@ -1,61 +1,59 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsw7udvboxvgj"]
+[gd_scene load_steps=10 format=3 uid="uid://bihaetgc3tf6k"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_tmhnp"]
-[ext_resource type="Texture2D" uid="uid://btp2xhlisyae1" path="res://assets/image/ships/ship_0002.png" id="2_pkkv4"]
-[ext_resource type="Texture2D" uid="uid://cy60gko32ldu1" path="res://assets/image/tiles/tile_0004.png" id="3_botb7"]
-[ext_resource type="Texture2D" uid="uid://diu1u7tsqc0g3" path="res://assets/image/tiles/tile_0005.png" id="4_i5tqy"]
-[ext_resource type="Texture2D" uid="uid://bfw8k45x5q227" path="res://assets/image/tiles/tile_0006.png" id="5_1fh85"]
-[ext_resource type="Texture2D" uid="uid://cl2bcot0hbxy1" path="res://assets/image/tiles/tile_0007.png" id="6_vfo7o"]
-[ext_resource type="Texture2D" uid="uid://c4guhna54yg3g" path="res://assets/image/tiles/tile_0008.png" id="7_6gn47"]
+[ext_resource type="Script" path="res://player.gd" id="1_fxrbs"]
+[ext_resource type="Texture2D" uid="uid://cqdan7nx1u5jj" path="res://assets/image/ships/ship_0002.png" id="1_ss7ix"]
+[ext_resource type="Texture2D" uid="uid://d04gcs3lb6ygf" path="res://assets/image/tiles/tile_0004.png" id="2_jyp5f"]
+[ext_resource type="Texture2D" uid="uid://du56u8qx801mm" path="res://assets/image/tiles/tile_0005.png" id="3_rox7w"]
+[ext_resource type="Texture2D" uid="uid://bh3l8foss8gy0" path="res://assets/image/tiles/tile_0006.png" id="4_5bewc"]
+[ext_resource type="Texture2D" uid="uid://bgskmd064q8bg" path="res://assets/image/tiles/tile_0007.png" id="5_h67ni"]
+[ext_resource type="Texture2D" uid="uid://n27qbwt3chrs" path="res://assets/image/tiles/tile_0008.png" id="6_aepv8"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_faawr"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_crkb6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_pkkv4")
+"texture": ExtResource("1_ss7ix")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_botb7")
+"texture": ExtResource("2_jyp5f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_i5tqy")
+"texture": ExtResource("3_rox7w")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_1fh85")
+"texture": ExtResource("4_5bewc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_vfo7o")
+"texture": ExtResource("5_h67ni")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_6gn47")
+"texture": ExtResource("6_aepv8")
 }],
 "loop": false,
 "name": &"explode",
-"speed": 8.0
+"speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dy7rm"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4uor7"]
 size = Vector2(22, 10)
 
-[node name="Player" type="Area2D" node_paths=PackedStringArray("n_anim", "n_shadow", "n_shot_disable_timer")]
-script = ExtResource("1_tmhnp")
-n_anim = NodePath("AnimatedSprite2D")
+[node name="Player" type="Area2D" node_paths=PackedStringArray("n_shadow", "n_anim", "n_shot_disable_timer")]
+script = ExtResource("1_fxrbs")
 n_shadow = NodePath("Sprite2D")
+n_anim = NodePath("AnimatedSprite2D")
 n_shot_disable_timer = NodePath("ShotDisableTimer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.372549)
-texture_filter = 1
 position = Vector2(3, 3)
-texture = ExtResource("2_pkkv4")
+texture = ExtResource("1_ss7ix")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_faawr")
+sprite_frames = SubResource("SpriteFrames_crkb6")
 animation = &"explode"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_dy7rm")
+shape = SubResource("RectangleShape2D_4uor7")
 
 [node name="ShotDisableTimer" type="Timer" parent="."]
 wait_time = 0.7

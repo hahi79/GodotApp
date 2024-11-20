@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://bmsxflfeaes2a"]
+
+[ext_resource type="Script" path="res://enemy_01.gd" id="1_sw7t6"]
+[ext_resource type="Texture2D" uid="uid://d1dtl44fk3yh7" path="res://assets/image/ships/ship_0005.png" id="2_ugedn"]
+[ext_resource type="Texture2D" uid="uid://d04gcs3lb6ygf" path="res://assets/image/tiles/tile_0004.png" id="3_ucauv"]
+[ext_resource type="Texture2D" uid="uid://du56u8qx801mm" path="res://assets/image/tiles/tile_0005.png" id="4_ujn7n"]
+[ext_resource type="Texture2D" uid="uid://bh3l8foss8gy0" path="res://assets/image/tiles/tile_0006.png" id="5_cls2e"]
+[ext_resource type="Texture2D" uid="uid://bgskmd064q8bg" path="res://assets/image/tiles/tile_0007.png" id="6_0swhw"]
+[ext_resource type="Texture2D" uid="uid://n27qbwt3chrs" path="res://assets/image/tiles/tile_0008.png" id="7_u3fk5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7sl3l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ugedn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ucauv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ujn7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cls2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0swhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_u3fk5")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gtj18"]
+size = Vector2(26, 8)
+
+[node name="Enemy_01" type="Area2D" node_paths=PackedStringArray("n_shadow", "n_anim") groups=["enemies"]]
+script = ExtResource("1_sw7t6")
+n_shadow = NodePath("Sprite2D")
+n_anim = NodePath("AnimatedSprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.372549)
+position = Vector2(3, 3)
+texture = ExtResource("2_ugedn")
+region_filter_clip_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7sl3l")
+animation = &"explode"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gtj18")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

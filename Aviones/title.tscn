@@ -1,20 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://bg64wr4knig1q"]
+[gd_scene load_steps=7 format=3 uid="uid://bkkw83n8ganmm"]
 
-[ext_resource type="Script" path="res://title.gd" id="1_6pv5h"]
-[ext_resource type="PackedScene" uid="uid://cvfhs0q7utcba" path="res://title_map.tscn" id="2_k34wp"]
-[ext_resource type="FontFile" uid="uid://dpaoavn6qbt1s" path="res://assets/fonts/Kenney Mini.ttf" id="3_w8la0"]
-[ext_resource type="Texture2D" uid="uid://blr6drq83gfyp" path="res://assets/logo gda 55 flat min.png" id="4_0j3tc"]
-[ext_resource type="Texture2D" uid="uid://btp2xhlisyae1" path="res://assets/image/ships/ship_0002.png" id="5_eb7ew"]
-[ext_resource type="PackedScene" uid="uid://be3nwh5gbhnlw" path="res://gda.tscn" id="6_eqk4o"]
+[ext_resource type="Script" path="res://title.gd" id="1_xfuy7"]
+[ext_resource type="PackedScene" uid="uid://dl38tbdgwywnc" path="res://title_map.tscn" id="2_sejsi"]
+[ext_resource type="FontFile" uid="uid://bpvv0osjt2364" path="res://assets/fonts/Kenney Mini.ttf" id="3_k3iab"]
+[ext_resource type="Texture2D" uid="uid://dvi0b7wwdi5f7" path="res://assets/image/logo gda 55 flat min.png" id="4_j4dit"]
+[ext_resource type="Texture2D" uid="uid://cqdan7nx1u5jj" path="res://assets/image/ships/ship_0002.png" id="5_a3h3a"]
+[ext_resource type="PackedScene" uid="uid://cgxbjhertpho" path="res://gda.tscn" id="6_gymun"]
 
-[node name="Title" type="Node2D" node_paths=PackedStringArray("n_level_1_button", "n_gda", "n_avoin")]
-script = ExtResource("1_6pv5h")
+[node name="Title" type="Node2D" node_paths=PackedStringArray("n_level_1_button", "n_aviones", "n_gda")]
+script = ExtResource("1_xfuy7")
 n_level_1_button = NodePath("Level1")
+n_aviones = NodePath("Sprite2D")
 n_gda = NodePath("GDA")
-n_avoin = NodePath("Sprite2D")
 
-[node name="TitleMap" parent="." instance=ExtResource("2_k34wp")]
-scale = Vector2(3, 3)
+[node name="TitleMap" parent="." instance=ExtResource("2_sejsi")]
 
 [node name="Label" type="Label" parent="."]
 offset_left = 83.0
@@ -23,7 +22,9 @@ offset_right = 289.0
 offset_bottom = 65.0
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_w8la0")
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("3_k3iab")
 theme_override_font_sizes/font_size = 40
 text = "Aviones"
 
@@ -32,8 +33,8 @@ offset_left = 50.0
 offset_top = 91.0
 offset_right = 110.0
 offset_bottom = 122.0
-theme_override_colors/font_color = Color(0, 0.776471, 0.698039, 1)
-theme_override_fonts/font = ExtResource("3_w8la0")
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_k3iab")
 text = "Level1"
 
 [node name="Exit" type="Button" parent="."]
@@ -41,35 +42,33 @@ offset_left = 50.0
 offset_top = 128.0
 offset_right = 98.0
 offset_bottom = 159.0
-theme_override_colors/font_color = Color(0, 0.776471, 0.682353, 1)
-theme_override_fonts/font = ExtResource("3_w8la0")
+theme_override_colors/font_color = Color(0, 0.996078, 0.996078, 1)
+theme_override_fonts/font = ExtResource("3_k3iab")
 text = "Exit"
 
 [node name="LogoGDA" type="Button" parent="."]
-texture_filter = 1
 offset_left = 244.0
 offset_top = 208.0
 offset_right = 407.0
 offset_bottom = 266.0
 scale = Vector2(0.5, 0.5)
-icon = ExtResource("4_0j3tc")
+icon = ExtResource("4_j4dit")
 flat = true
 expand_icon = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
+z_as_relative = false
 position = Vector2(200, 125)
 scale = Vector2(3, 3)
-texture = ExtResource("5_eb7ew")
+texture = ExtResource("5_a3h3a")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(0, 0, 0, 0.529412)
 z_index = -1
-texture_filter = 1
-position = Vector2(2.667, 3.667)
-texture = ExtResource("5_eb7ew")
+position = Vector2(2, 2)
+texture = ExtResource("5_a3h3a")
 
-[node name="GDA" parent="." instance=ExtResource("6_eqk4o")]
+[node name="GDA" parent="." instance=ExtResource("6_gymun")]
 
 [connection signal="pressed" from="Level1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Exit" to="." method="_on_exit_pressed"]
