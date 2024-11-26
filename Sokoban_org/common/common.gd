@@ -4,7 +4,7 @@ const Point2 = preload("res://common/point2.gd")
 
 
 const FIRST_LEVEL=1
-const FINAL_LEVEL=7
+const FINAL_LEVEL=3
 
 ## -----------------------------------
 ## リプレイデータ

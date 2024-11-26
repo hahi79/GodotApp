@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 ## グリッド(インデックス)座標系で動作するオブジェクトの基底
 class_name GridObject
 
