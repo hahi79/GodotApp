@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy2wh6vha7v3v"]
+
+[ext_resource type="Script" path="res://test/score_counter_test.gd" id="1_1x48n"]
+[ext_resource type="PackedScene" uid="uid://crcyya6sn1ek7" path="res://score_counter.tscn" id="2_wgkdj"]
+
+[node name="ScoreCounterTest" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_1x48n")
+
+[node name="ScoreCounter" parent="." instance=ExtResource("2_wgkdj")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+offset_right = 64.0
+grow_horizontal = 1
