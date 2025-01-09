@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://bk2hfuoudwrnw"]
+
+[ext_resource type="Script" path="res://test/camera_test.gd" id="1_56lah"]
+[ext_resource type="PackedScene" uid="uid://cmmftaib1jjvy" path="res://camera.tscn" id="2_4yhp6"]
+[ext_resource type="PackedScene" uid="uid://cs4o15p4pcxup" path="res://background.tscn" id="3_54k5o"]
+
+[node name="CameraTest" type="Node2D"]
+script = ExtResource("1_56lah")
+
+[node name="Camera" parent="." instance=ExtResource("2_4yhp6")]
+
+[node name="Background" parent="." instance=ExtResource("3_54k5o")]

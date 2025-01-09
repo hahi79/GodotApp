@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi46nqrldwan8"]
+
+[ext_resource type="PackedScene" uid="uid://p7l8bskfbsx2" path="res://enemy_anchor.tscn" id="1_3a131"]
+[ext_resource type="Texture2D" uid="uid://bgbo0irwciuvj" path="res://assets/Enemies/Alan (16 x 16).png" id="2_s4xvg"]
+
+[node name="EnemyAnchorTest" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(120, 160)
+
+[node name="EnemyAnchor" parent="Node2D" instance=ExtResource("1_3a131")]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/EnemyAnchor"]
+texture = ExtResource("2_s4xvg")
+hframes = 6

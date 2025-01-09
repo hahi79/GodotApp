@@ -2,9 +2,9 @@ extends Node
 
 const ENEMY_GROUP="enemy"
 
-var enemy_scene #=preload("res://enemy.tscn")
-var player_bullet_scene #=preload("res://bullet.tscn")
-var enemy_bullet_scene #=preload("res://enemy_bullet.tscn")
+var enemy_scene =preload("res://enemy.tscn")
+var player_bullet_scene =preload("res://bullet.tscn")
+var enemy_bullet_scene =preload("res://enemy_bullet.tscn")
 
 var screen_size: Vector2
 
