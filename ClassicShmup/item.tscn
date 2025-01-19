@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd3utnejgj45y"]
+
+[ext_resource type="Script" path="res://item.gd" id="1_tipt4"]
+[ext_resource type="Texture2D" uid="uid://nrm5xnifgufl" path="res://assets/Items/Power_item (16 x 16).png" id="2_wjj81"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8kur1"]
+size = Vector2(8, 10)
+
+[node name="Item" type="Area2D" node_paths=PackedStringArray("n_sprite")]
+script = ExtResource("1_tipt4")
+n_sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wjj81")
+hframes = 3
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8kur1")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

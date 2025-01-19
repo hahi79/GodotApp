@@ -64,7 +64,11 @@ func shoot():
 	can_shoot=false
 	n_shot_cooldown.start()
 	var pos = position + Vector2(0,-8)
-	Common.create_player_bullet(pos)
+	if Common.is_missile_shot():
+		Common.create_missile_bullet(pos, Common.DIR_U)
+	else:
+		Common.create_player_bullet(pos)
+	# ショット振動演出
 	var tween = create_tween().set_parallel(false)	
 	tween.tween_property(n_ship,"position:y",1,0.1)	
 	tween.tween_property(n_ship,"position:y",0,0.05)	

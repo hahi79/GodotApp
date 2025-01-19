@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://seq8cn8lyr3s"]
+
+[ext_resource type="Script" path="res://test/click_mask_test.gd" id="1_ida8k"]
+[ext_resource type="Texture2D" uid="uid://v822niwpqykl" path="res://test/click_mask_test_button.png" id="2_d4byp"]
+[ext_resource type="BitMap" uid="uid://bq1ha3oxgseqv" path="res://test/click_mask_test_mask.tres" id="3_dow5e"]
+
+[node name="ClickMaskTest" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ida8k")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("2_d4byp")
+texture_click_mask = ExtResource("3_dow5e")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

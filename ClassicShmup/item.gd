@@ -1,10 +1,17 @@
 extends Area2D
 
-@export var speed = -250
+signal get_item
 
-## 開始処理
-func start(pos):
+@export var n_sprite:Sprite2D
+@export var speed:float=40
+
+var item_kind:int
+
+
+func start(pos,item):
 	position=pos
+	item_kind=item
+	n_sprite.frame=item	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,15 +19,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.y += speed * delta
-## 画面外に出た
+	position.y += speed*delta
+
+## 画面外にでた	
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
 
-## なにかと衝突した
+## なにかに衝突した
 func _on_area_entered(area):
-	if area.is_in_group(Common.ENEMY_GROUP):
-		area.explode()
+	if area.name=="Player":
+		get_item.emit(item_kind)
 		queue_free()
-		Common.defeat_enemy(area)
-

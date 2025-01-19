@@ -14,6 +14,7 @@ func _ready():
 	assert(n_hud!=null)
 	assert(n_enemy_anchor!=null)
 	assert(n_camera!=null)
+	Common.set_main(self)
 	while true:
 		await game()
 
@@ -31,6 +32,8 @@ func game():
 	await n_hud.wait_game_over()
 
 func new_game():
+	Common.missile_defeat_count=0
+	missile_timer=0
 	score = 0
 	n_hud.update_score(score)
 	n_player.start()
@@ -53,7 +56,9 @@ func spawn_enemies():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if missile_timer > 0:
+		missile_timer-=delta
+
 ## エネミーが死亡した
 func _on_enemy_died(value):
 	score += value
@@ -68,3 +73,26 @@ func _on_player_died():
 func _on_player_shield_changed(max_value,value):
 	n_hud.update_shield(max_value,value)
 
+######################################
+##  追加作成
+func can_generate_shield_item():
+	var f:float=float(n_player.shield)/n_player.max_shield 
+	if f<0.5 and randf()<0.5:
+		return true
+	return false
+
+func get_item(item):
+	match item:
+		Common.ITEM_SHIELD:
+			Common.pause(true)
+			while n_player.shield<n_player.max_shield:
+				await Common.wait_sec(0.5)
+				n_player.add_shield(1)			
+			Common.pause(false)			
+		Common.ITEM_MISSILE:
+			missile_timer = 10
+
+var missile_timer:float
+
+func is_missile_shot():
+	return missile_timer > 0

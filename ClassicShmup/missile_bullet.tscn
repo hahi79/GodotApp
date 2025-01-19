@@ -1,0 +1,183 @@
+[gd_scene load_steps=21 format=3 uid="uid://bgg2j2f4bd0t1"]
+
+[ext_resource type="Script" path="res://missile_bullet.gd" id="1_2mrax"]
+[ext_resource type="Texture2D" uid="uid://dax32se8f2pl2" path="res://assets/Projectiles/Player_missile_shots (16 x 16).png" id="1_gub2v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v33e"]
+atlas = ExtResource("1_gub2v")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cl34e"]
+atlas = ExtResource("1_gub2v")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2raxi"]
+atlas = ExtResource("1_gub2v")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyo64"]
+atlas = ExtResource("1_gub2v")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38sho"]
+atlas = ExtResource("1_gub2v")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i15x1"]
+atlas = ExtResource("1_gub2v")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmrmm"]
+atlas = ExtResource("1_gub2v")
+region = Rect2(192, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5n2ag"]
+atlas = ExtResource("1_gub2v")
+region = Rect2(208, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwhpg"]
+atlas = ExtResource("1_gub2v")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x6oxy"]
+atlas = ExtResource("1_gub2v")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0x6s"]
+atlas = ExtResource("1_gub2v")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1h5h"]
+atlas = ExtResource("1_gub2v")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jira"]
+atlas = ExtResource("1_gub2v")
+region = Rect2(224, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2dyu"]
+atlas = ExtResource("1_gub2v")
+region = Rect2(240, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rg85o"]
+atlas = ExtResource("1_gub2v")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q74bi"]
+atlas = ExtResource("1_gub2v")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ocbt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v33e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cl34e")
+}],
+"loop": true,
+"name": &"D",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2raxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyo64")
+}],
+"loop": true,
+"name": &"DL",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38sho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i15x1")
+}],
+"loop": true,
+"name": &"DR",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmrmm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5n2ag")
+}],
+"loop": true,
+"name": &"L",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwhpg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x6oxy")
+}],
+"loop": true,
+"name": &"R",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0x6s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1h5h")
+}],
+"loop": true,
+"name": &"U",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jira")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2dyu")
+}],
+"loop": true,
+"name": &"UL",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rg85o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q74bi")
+}],
+"loop": true,
+"name": &"UR",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_atwen"]
+radius = 4.0
+
+[node name="MissileBullet" type="Area2D" node_paths=PackedStringArray("n_anim")]
+script = ExtResource("1_2mrax")
+n_anim = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0ocbt")
+animation = &"D"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_atwen")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="ChaseTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="ChaseTimer" to="." method="_on_chase_timer_timeout"]
